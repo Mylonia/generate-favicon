@@ -1,4 +1,4 @@
-# generate-favicon
+# Favicon Generator Script
 
 This script can help you generate different favicon files based on a single SVG you provide.
 
