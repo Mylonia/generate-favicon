@@ -1,6 +1,10 @@
 # generate-favicon
 
-A script for generating all necessary favicon files from a single SVG source file.
+This script can help you generate different favicon files based on a single SVG you provide.
+
+```bash
+./generate-favicon --source=icon.svg
+```
 
 ## Features
 
@@ -8,9 +12,6 @@ A script for generating all necessary favicon files from a single SVG source fil
 - ✅ Multi-resolution `.ico` file (16x16, 32x32, 48x48)
 - ✅ Creates web app manifest with proper icon references
 - ✅ Preserves SVG source for modern browsers
-- ✅ Proper error handling and validation
-- ✅ Colored terminal output for better UX
-- ✅ Helpful HTML snippet generation
 
 ## Generated Files
 
@@ -60,11 +61,6 @@ chmod +x generate-favicon
 sudo mv generate-favicon /usr/local/bin/
 ```
 
-### Option 2: Manual Installation
-1. Save the script as `generate-favicon`
-2. Make it executable: `chmod +x generate-favicon`
-3. Place it in your PATH or use with `./generate-favicon`
-
 ## Usage
 
 ### Basic Usage
@@ -113,17 +109,9 @@ After generating your favicons, add these tags to your HTML `<head>`:
 <link rel="manifest" href="/favicon/site.webmanifest">
 ```
 
-### Legacy Browsers
-
-If you need to support very old browsers, also include:
-
-```html
-<link rel="shortcut icon" href="/favicon/favicon.ico">
-```
-
 ## Web Manifest Configuration
 
-The script generates a basic `site.webmanifest` file. You should customize it for your application:
+The script only generates a basic `site.webmanifest` file. You should customize the `name`, `short_name` and color fields for your use case manually:
 
 ```json
 {
@@ -148,41 +136,3 @@ The script generates a basic `site.webmanifest` file. You should customize it fo
   "display": "standalone"
 }
 ```
-
-## Best Practices for Source SVG
-
-For optimal results, your source SVG should:
-
-1. **Be square** - Favicons are square, so use a 1:1 aspect ratio
-2. **Use simple shapes** - Complex details may not render well at small sizes
-3. **Have good contrast** - Ensure visibility on light and dark backgrounds
-4. **Be optimized** - Remove unnecessary metadata and compress the file
-5. **Test at small sizes** - Preview how it looks at 16×16 and 32×32
-
-### Recommended SVG Specifications
-
-- **Dimensions:** 512×512 or larger (vector scales down better than up)
-- **Stroke width:** At least 2-3px for visibility at small sizes
-- **Safe area:** Keep important elements within the center 80%
-
-## Troubleshooting
-
-### Error: "Missing required dependencies"
-
-Install the required tools using your package manager (see System Requirements).
-
-### Error: "Source file does not exist"
-
-Check that the file path is correct and the file exists. Use an absolute path if needed:
-
-```bash
-./generate-favicon --source=/full/path/to/icon.svg
-```
-
-### Error: "Source file must be an SVG file"
-
-Ensure your source file has a `.svg` extension and is a valid SVG file.
-
-### Blurry or pixelated output
-
-This usually means your source SVG is too small or not properly vectorized. Use a larger SVG (512×512 or bigger) for best results.
